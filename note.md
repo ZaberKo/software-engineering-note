@@ -1,4 +1,4 @@
-Software Engineering note
+# Software Engineering note
 
 ## Software configuration management(SCM)
 
@@ -18,7 +18,7 @@ Software Engineering note
 - Unit test
   - 单元测试又称为模块测试，是针对程序模块（软件设计的最小单位）来进行正确性检验的测试工作。**程序单元**是应用的最小可测试部件。在过程化编程中，一个单元就是单个程序、函数、过程等；对于面向对象编程，最小单元就是方法，包括基类（超类）、抽象类、或者派生类（子类）中的方法。
 - Regression test
-  - 解决一个问题后的测试，方向是判断新的代码是否引入了新问题。
+  - 指修改了旧代码后，重新进行测试以确认修改没有引入新的错误或导致其他代码产生错误。
 
 
 
@@ -32,9 +32,12 @@ Software Engineering note
 
 ### Extreme Programming
 
+对比rigid waterfall process是一个collaborative and iterative design process
+
 **Main ideas**
 
 - Don't write much documentation
+  - Working code and tests are the main written product
 - Implement features one by one
 - Release code frequently
 - Work closely with the customer
@@ -108,7 +111,7 @@ Fault: defect, bug
 
 Failure: program behaves unexpectedly during testing
 
-Error: difference between "computed, observed, or measured value or condition" and "true, specified, or theoretically correct value or condition"
+Error: difference between "computed, observed, or measured value or condition" and "true, specified, or theoretically correct value or condition" (**Error causes failure**)
 
 
 
@@ -252,7 +255,7 @@ Abstractness越大，Instability越低
 
 
 
-### List of OO metrics(不考)
+### List of OO metrics
 
 - Weighted Methods Per Class (WMC)
 
@@ -405,11 +408,47 @@ Authorization: establishes what an authenticated agent may do
 
 
 
+### Regression Test
 
+re-running functional and non-functional tests to ensure that previously developed and tested software still performs after a change.
+
+回归测试确保系统的一部分中的新代码不会在整个系统中引起不必要的副作用。
+
+
+
+
+
+### Flaky Tests
+
+Test which could **fail** or **pass** for the same code
+
+Reasons:
+
+- Concurrency
+- Environment/setup problems
+- Non-deterministic or undefined behaviors
+
+
+
+![image-20190610002753945](note.assets/image-20190610002753945.png)
+
+
+
+![image-20190610001137074](note.assets/image-20190610001137074.png)
+
+#### Regression Test Selection(RTS)
+
+No need to Retest all
+
+this technique runs a part of the test suite (owing to the cost of retest all) if the cost of selecting the part of the test suite is less than the Retest all technique.
 
 ## System reuse
 
+### Types of reuse: 
 
+- Application System reuse 
+- Components reuse 
+- Function reuse 
 
 
 
@@ -443,7 +482,7 @@ Javadoc comments should be written for **programmers who want to use your code**
 
 
 
-# Devops&CI
+## Devops&CI
 
 **Devops:**
 
@@ -500,9 +539,139 @@ Continuous Deployment=CD+ automatic deployment
 
 
 
-# Security Engineering
+## Security Engineering
 
-## Risks type
+**Definition:**
+
+Tools, techniques and methods to support the development and maintenance of systems that can resist malicious attacks that are intended to damage a computer-based system or its data.
+
+
+
+### Security Dimensions
+
+- Confidentiality
+  - Information in a system may be disclosed or made accessible to people or programs that are not authorized to have access to that information. 
+- Integrity
+  - Information in a system may be damaged or corrupted making it unusual or unreliable.
+- Availabilty
+  - Access to a system or its data that is normally available may not be possible.
+
+
+
+### Security Levels
+
+- Infrastructure security(not focus on this class)
+  - concerned with maintaining the security of all systems and networks that provide an infrastructure and a set of shared services to the organization.
+  - a **systems management** problem where the infrastructure is **configured** to resist attacks
+- Application security
+  - concerned with the security of individual application systems or related groups of systems.
+  - a **software engineering** problem where the system is **designed** to resist attacks.
+- Operational security
+  - concerned with the secure operation and use of the organization’s systems.
+
+
+
+### System security management
+
+- User and permission management
+  - Adding and removing users from the system and setting up appropriate permissions for users
+- Software deployment and maintenance
+  - Installing application software and middleware and configuring these systems so that vulnerabilities are avoided.
+- Attack monitoring, detection and recovery
+  - Monitoring the system for unauthorized access, design strategies for resisting attacks and develop backup and recovery strategies.
+
+
+
+### Security terminology
+
+![image-20190610004648566](note.assets/image-20190610004648566.png)
+
+#### Examples:
+
+![image-20190610004657659](note.assets/image-20190610004657659.png)
+
+
+
+### Thread type
+
+- Interception(窃听) threats that allow an attacker to gain access to an asset
+- Interruption threats that allow an attacker to make part of the system unavailable
+- Modification threats that allow an attacker to tamper(篡改) with a system asset.
+- Fabrication(伪造) threats that allow an attacker to insert false information into a system
+
+
+
+### Security assurance
+
+- Vulnerability avoidance
+- Attack detection and elimination
+- Exposure limitation and recovery
+
+
+
+### Security and dependability 
+
+- Security and reliability 可靠性 
+- Security and availability 可用性 
+-  Security and safety  安全性 
+-  Security and resilience 弹性 恢复能力
+
+
+
+
+
+### Risk management involves
+
+- Preliminary risk assessment 初步 成本分析 
+- Life cycle risk assessment 开发过程中 可能产生新的需求
+- Operational risk assessment 人的操作 可能产生新的需求
+
+
+
+### Secure systems design
+
+Design compromises: security 会降低 Performance & Usability  
+
+
+
+Two fundamental issues have to be considered when designing an architecture for security
+
+- Protection
+  - How should the system be organised so that critical assets can be protected against external attack? 
+- Distribution
+  - How should system assets be distributed so that the effects of a successful attack are minimized?
+- If assets are distributed, then they are more expensive to protect. If assets are protected, then usability and performance requirements may be compromised. 
+
+### Design guidelines 
+
+- Base security decisions on an **explicit security policy** 
+- Avoid a single point of failure 
+- Fail securely 
+- Balance **security and usability** 
+- Log user actions 
+- Use **redundancy** and **diversity** to reduce risk 
+- Specify the **format of** all system **inputs** 
+- Compartmentalize your assets 
+- Design for deployment 
+- Design for **recoverability** 
+
+
+
+### Key Point
+
+- Security engineering is concerned with how to develop systems that can **resist malicious attacks**  
+- Security **threats** can be threats to **confidentiality**, **integrity** or **availability** of a system or its data  
+-  Security risk management is concerned with **assessing possible losses** from attacks and deriving security requirements to minimise losses. 评估和提出需求预防 
+- To specify security requirements, you should **identify the assets** that are to be protected and define how security techniques and technology should be used to protect these assets. 
+- Key issues when designing a secure systems architecture include **organizing** **the system structure** to protect key assets and **distributing** **the system assets** to minimize the losses from a successful attack. 组织机构保护关键资产 分布式减少冲击损失 
+-  Security design guidelines sensitize system designers to security issues that they may not have considered. They provide a basis for creating security review checklists.  
+-  Security validation is difficult because security requirements state **what should not happen in a system**, rather than what should. Furthermore, system attackers are intelligent and may have more time to probe for weaknesses than is available for security testing.安全性需求应该说明不应该发生什么 
+
+
+
+
+
+### Risks type(源于视频资料)
 
 1. Insecure data storage
 2. Weak Server side controls
