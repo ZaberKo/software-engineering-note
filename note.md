@@ -11,15 +11,6 @@
 - Requires expertise and oversight 
 - More important on large projects
 
-## tests
-
-- Smoke test (build verification test)
-  - 冒烟测试是指对提交测试的软件在进行详细深入的测试之前而进行的预测试，这种预测试的主要目的是暴露导致软件需重新发布的基本功能失效等严重问题。冒烟测试可以由开发人员执行，也可以由测试人员来执行。即，在版本编译后正式提交测试之前由开发人员执行；或开发发布版本后，测试人员在接受这个版本作为正式版本进一步测试前执行。
-- Unit test
-  - 单元测试又称为模块测试，是针对程序模块（软件设计的最小单位）来进行正确性检验的测试工作。**程序单元**是应用的最小可测试部件。在过程化编程中，一个单元就是单个程序、函数、过程等；对于面向对象编程，最小单元就是方法，包括基类（超类）、抽象类、或者派生类（子类）中的方法。
-- Regression test
-  - 指修改了旧代码后，重新进行测试以确认修改没有引入新的错误或导致其他代码产生错误。
-
 
 
 ## Extreme Programming
@@ -259,44 +250,49 @@ Abstractness越大，Instability越低
 
 - Weighted Methods Per Class (WMC)
 
-WMC for a class is the sum of the complexities of the methods in the class
-
-**Possible method complexities** 
-1 (number of methods)
-Lines of code
-Number of method calls
-Cyclomatic complexity
+  - WMC for a class is the sum of the complexities of the methods in the class
+  - **Possible method complexities** 
+    - 1 (number of methods)
+    - Lines of code
+    - Number of method calls
+    - Cyclomatic complexity
 
 
 
 - Depth of Inheritance Tree (DIT)
 
-Maximum length from a class to the root of the tree
+  - Maximum length from a class to the root of the tree
+  - eg: DIT=4
+  - ![image-20190422112851694](note.assets/image-20190422112851694.png)
+  - The deeper a class is in the hierarchy:
+    - the more methods it inherits and so it is harder to predict its behavior
+    - the more methods it reuses, Deeper trees are more complex
 
-![image-20190422112851694](note.assets/image-20190422112851694.png)
 
-The deeper a class is in the hierarchy, the more methods it inherits and so it is harder to predict its behavior
-The deeper a class is in the hierarchy, the more methods it reuses 
-Deeper trees are more complex
+
+
 
 - Number of Children (NOC)
 
-Number of immediate subclasses
-
-More children is more reuse
+  - Number of immediate subclasses
+  - More children is more reuse
 
 - Coupling between Object Classes (CBO)
 
-Number of other classes to which a class is coupled 
+  - Number of other classes to which a class is coupled 
 
 - Response for a Class (RFC)
 
-Number of methods in a class or called by a class
+  - Number of methods in a class or called by a class
 
 - Lack of Cohesion in Methods (LCOM)
 
+  - 下式针对**pairs of methods**的数量
+
+  - \# pair of methods that share instances 减 \# … don't share …
+
 ```
-=Num_don't_share-instance-Num_shared_instance
+= #don't_share_instance - #shared_instance
 ```
 
 
@@ -333,7 +329,18 @@ Discovering design of an artifact, from lower level to higher level.
   - is done after coding and before executing unit tests
   - Tools: Checkstyle, PMD, FindBugs
 
-### junit
+### Types
+
+- Smoke test (build verification test)
+  - 冒烟测试是指对提交测试的软件在进行详细深入的测试之前而进行的预测试，这种预测试的主要目的是暴露导致软件需重新发布的基本功能失效等严重问题。冒烟测试可以由开发人员执行，也可以由测试人员来执行。即，在版本编译后正式提交测试之前由开发人员执行；或开发发布版本后，测试人员在接受这个版本作为正式版本进一步测试前执行。
+- Unit test
+  - 单元测试又称为模块测试，是针对程序模块（软件设计的最小单位）来进行正确性检验的测试工作。**程序单元**是应用的最小可测试部件。在过程化编程中，一个单元就是单个程序、函数、过程等；对于面向对象编程，最小单元就是方法，包括基类（超类）、抽象类、或者派生类（子类）中的方法。
+- Regression test
+  - 指修改了旧代码后，重新进行测试以确认修改没有引入新的错误或导致其他代码产生错误。
+
+
+
+### Junit
 
 1. 测试类的命名
 
@@ -521,7 +528,7 @@ An external machine that automatically pulls your latest repo code and fully bui
 
 
 
-#### Continuous Integration &  Continous Delivery & 
+#### Continuous Integration持续集成 &  Continous Delivery持续交付 & Continuous Deployment持续部署
 
 ![image-20190606183120245](note.assets/image-20190606183120245.png)
 
