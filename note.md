@@ -457,6 +457,104 @@ this technique runs a part of the test suite (owing to the cost of retest all) i
 - Components reuse 
 - Function reuse 
 
+### Benefits of reuse
+
+- Increased reliability 
+- Reduced process risk 
+- Effective use of specialists 
+- Standard compliance 
+- Accelerate development 
+
+### Problems of reuse
+
+- Increased maintenance cost 
+- Lack of tool support 
+- Pervasiveness(普遍的) of "not invented here" syndrome (综合症)
+- Need to create and maintain a component library 
+- Finding and adapting reusable components 
+
+
+
+### Generator-Based Reuse
+
+![image-20190610082751557](note.assets/image-20190610082751557.png)
+
+#### Advantages 
+
+- Cost effective 
+- Easier for end-users to develop programs using generators than other CBSE techniques 
+
+#### Disadvantages 
+
+- Limited to small number of application domains 
+
+
+
+### Component-Based Software Engineering
+
+#### CBSE VS OOSE 
+
+- CBSE relies on reuse 
+- CBSE emerge from the failure of OOSE to support reuse effectively 
+- Objects (classes) are too specific to reuse 
+- Components are more abstract than classes (stand-alone service providers) 
+
+###  Commercial Off-the-shelf (COTS) components
+
+usually complete applications library the off
+an applications programming interface (API)
+
+#### COTS integration problems
+
+- Lack of developer control over functionality and performance 
+- Problems with component interoperability as COTS vendors make different user assumptions
+- COTS vendors may not offer users any control over the evolutions of its components
+- COTS vendors may not offer support over the lifetime of a product 
+
+
+
+
+
+### Abstraction in SE
+
+- Procedural Abstraction 
+  - Naming a sequence of instructions 
+  - Parameterizing a procedure 
+- Data abstraction 
+  - Naming a collection of data 
+  - Data type defined by a set of procedures 
+- Control abstraction 
+  - W/o specifying all register/binary-level steps 
+- Performance Abstraction 
+  - O(N)… 
+
+#### How to get abstractions
+
+- Get from someone else 
+- Generalize from examples 
+- Look for duplications and eliminate them 
+
+
+
+### Architecture
+
+**Example:**
+
+![image-20190610085012217](note.assets/image-20190610085012217.png)
+
+### Modularity
+
+#### Advantage:
+
+- Information hiding(high cohesion, low coupling)
+- Work in parallel 
+- Security - compartmentalization 
+- Reliability - localization of failure 
+- Parallelism - load balance processes 
+- Distributed programming - design modules to reduce communication 
+
+
+
 
 
 ## UI design
@@ -465,7 +563,7 @@ this technique runs a part of the test suite (owing to the cost of retest all) i
 
 
 
-## Comments
+## Comment&Documentation
 
 ### Javadoc
 
@@ -482,6 +580,10 @@ Javadoc comments should be written for **programmers who want to use your code**
 #### Tags
 
 ![image-20190606180617417](note.assets/image-20190606180617417.png)
+
+@throws以前使用的是@exception, 二者等价
+
+
 
 #### Rules for writing summaries
 
@@ -528,11 +630,11 @@ An external machine that automatically pulls your latest repo code and fully bui
 
 
 
-#### Continuous Integration持续集成 &  Continous Delivery持续交付 & Continuous Deployment持续部署
+#### Continuous Integration持续集成 &  Continuous Delivery持续交付 & Continuous Deployment持续部署
 
 ![image-20190606183120245](note.assets/image-20190606183120245.png)
 
-##### Continous Delivery
+##### Continuous Delivery
 
 - Continous Delivery=CI+ automated test suite
 - Not every change is a release
